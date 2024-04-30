@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Button Actions</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: pink;
+  }
+  #container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+  }
+  #yesBtn, #noBtn {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 15px 30px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  #yesBtn {
+    position: relative;
+    background-color: green;
+  }
+  #noBtn {
+    position: relative;
+    background-color: red;
+  }
+  #gifContainer {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  #gifContainer img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    max-height: 100%;
+  }
+</style>
+</head>
+<body>
+<div id="container">
+  <button id="yesBtn">YES</button>
+  <button id="noBtn">NO</button>
+</div>
+<div id="gifContainer">
+  <img src="cat.gif" alt="Cat GIF">
+</div>
+<script>
+  const yesBtn = document.getElementById('yesBtn');
+  const noBtn = document.getElementById('noBtn');
+  const gifContainer = document.getElementById('gifContainer');
+
+  noBtn.addEventListener('mouseenter', () => {
+    const newX = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+    const newY = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+    noBtn.style.left = newX + 'px';
+    noBtn.style.top = newY + 'px';
+  });
+
+  yesBtn.addEventListener('click', () => {
+    yesBtn.style.display = 'none';
+    noBtn.style.display = 'none';
+    gifContainer.style.display = 'block';
+  });
+</script>
+</body>
+</html>
